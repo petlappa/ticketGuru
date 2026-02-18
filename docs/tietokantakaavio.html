@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>TicketGuru - Tietokantakaavio</title>
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({ startOnLoad: true });</script>
+    <style>
+        body { font-family: system-ui, sans-serif; padding: 2rem; background: #f5f5f5; }
+        h1 { margin-bottom: 1rem; }
+        .mermaid { background: white; padding: 2rem; border-radius: 8px; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>TicketGuru – Tietokantakaavio</h1>
+    <div class="mermaid">
+erDiagram
+    TAPAHTUMA ||--o{ LIPPU : "sisältää"
+    LIPPUTYYPPI ||--o{ LIPPU : "tyyppi"
+    MYYNTITAPAHTUMA ||--o{ LIPPU : "sisältää"
+    
+    TAPAHTUMA {
+        bigint id PK
+        varchar kuvaus
+        timestamp aika
+        varchar kaupunki
+        varchar paikka
+        int kapasiteetti
+    }
+    
+    LIPPUTYYPPI {
+        bigint id PK
+        varchar kuvaus
+        decimal hinta
+    }
+    
+    MYYNTITAPAHTUMA {
+        bigint id PK
+        varchar tunniste UK
+        timestamp aika
+        decimal summa
+    }
+    
+    LIPPU {
+        bigint id PK
+        varchar koodi UK
+        bigint tapahtuma_id FK
+        bigint lipputyyppi_id FK
+        bigint myyntitapahtuma_id FK
+    }
+    </div>
+</body>
+</html>

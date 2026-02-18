@@ -2,6 +2,26 @@
 
 ## Tietokantakaavio
 
+### 1 ja * -notaatio (cardinaliteetti)
+
+```mermaid
+flowchart TB
+    subgraph Taulut
+        T[(TAPAHTUMA)]
+        L[(LIPPU)]
+        LT[(LIPPUTYYPPI)]
+        MT[(MYYNTITAPAHTUMA)]
+    end
+
+    T ---|"1 : *"| L
+    LT ---|"1 : *"| L
+    MT ---|"1 : *"| L
+```
+
+*1 = yksi, * = usea. Esim. TAPAHTUMA 1:* LIPPU = yksi tapahtuma, useita lippuja.*
+
+### ER-kaavio (Crow's Foot -tyyli)
+
 ```mermaid
 erDiagram
     TAPAHTUMA ||--o{ LIPPU : "sisältää"
