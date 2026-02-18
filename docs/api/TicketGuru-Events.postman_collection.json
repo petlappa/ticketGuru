@@ -1,0 +1,75 @@
+{
+  "info": {
+    "name": "TicketGuru - Events API",
+    "description": "Tapahtumien CRUD-rajapinta",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Hae kaikki tapahtumat",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/events",
+        "description": "Palauttaa kaikki tapahtumat ajan mukaan lajiteltuna"
+      }
+    },
+    {
+      "name": "Hae yksi tapahtuma",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/events/1",
+        "description": "Palauttaa tapahtuman id:llä 1"
+      }
+    },
+    {
+      "name": "Luo uusi tapahtuma",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/api/events",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"kuvaus\": \"Super-Gaala\",\n  \"aika\": \"2025-03-05T20:00:00\",\n  \"kaupunki\": \"Helsinki\",\n  \"paikka\": \"Finlandia-talo\",\n  \"kapasiteetti\": 1700\n}"
+        },
+        "description": "Luo uuden tapahtuman"
+      }
+    },
+    {
+      "name": "Päivitä tapahtuma",
+      "request": {
+        "method": "PUT",
+        "url": "{{baseUrl}}/api/events/1",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"kuvaus\": \"Super-Gaala (päivitetty)\",\n  \"aika\": \"2025-03-05T21:00:00\",\n  \"kaupunki\": \"Helsinki\",\n  \"paikka\": \"Finlandia-talo\",\n  \"kapasiteetti\": 1800\n}"
+        },
+        "description": "Päivittää tapahtuman id:llä 1"
+      }
+    },
+    {
+      "name": "Poista tapahtuma",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/api/events/1",
+        "description": "Poistaa tapahtuman id:llä 1"
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}
