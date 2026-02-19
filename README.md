@@ -30,13 +30,28 @@ git clone https://github.com/<user>/ticketGuru.git
 cd ticketGuru
 ```
 
-3. Käynnistä sovellus:
+### 3. Käynnistys komentoriviltä
 
 ```bash
 mvn spring-boot:run
 ```
 
 Sovellus käynnistyy oletuksena osoitteeseen: `http://localhost:8080`.
+
+### 4. Käynnistys VS Code / Cursor -editorista
+
+**VS Code / Cursorissa:**
+
+- Avaa projektikansio (`ticketGuru`) editorissa
+- Avaa tiedosto `src/main/java/com/example/ticketguru/TicketGuruApplication.java`
+- Paina rivin numeron vieressä olevaa vihreää **Run**-painiketta  
+  _tai_ käytä komentoa:
+
+```text
+Run → Run Without Debugging
+```
+
+Sovellus käynnistyy samoin porttiin `8080`, ja API on käytettävissä osoitteessa `http://localhost:8080/api/events`.
 
 ---
 
@@ -59,10 +74,10 @@ Tapahtumiin liittyvät endpointit:
 | DELETE | `/events/{id}`    | Poista tapahtuma      |
 
 Lisätiedot pyynnöistä ja vastauksista:  
-**`docs/api/API-dokumentaatio.md`**
+**[docs/api/API-dokumentaatio.md](docs/api/API-dokumentaatio.md)**
 
 Postman-kokoelma:  
-**`docs/api/TicketGuru-Events.postman_collection.json`**
+**[docs/api/TicketGuru-Events.postman_collection.json](docs/api/TicketGuru-Events.postman_collection.json)**
 
 ---
 
@@ -81,19 +96,19 @@ Skripti olettaa, että sovellus on käynnissä portissa 8080.
 ## Dokumentaatio
 
 - **Sprinttisuunnitelmat**:  
-  - `docs/Sprint1-suunnitelma.md`  
-  - `docs/Sprint2-suunnitelma.md`  
-  - `docs/Sprint3-suunnitelma.md`
+  - [docs/Sprint1-suunnitelma.md](docs/Sprint1-suunnitelma.md)  
+  - [docs/Sprint2-suunnitelma.md](docs/Sprint2-suunnitelma.md)  
+  - [docs/Sprint3-suunnitelma.md](docs/Sprint3-suunnitelma.md)
 
 - **Tietokanta**:  
-  - `docs/Tietokanta.md` (ER-kaaviot: Mermaid, 1:* -notaatio)  
-  - HTML-kaaviot: `docs/tietokantakaavio.html`, `docs/tietokantakaavio-1-N.html`
+  - [docs/Tietokanta.md](docs/Tietokanta.md) (ER-kaaviot: Mermaid, 1:* -notaatio)  
+  - HTML-kaaviot: [docs/tietokantakaavio.html](docs/tietokantakaavio.html), [docs/tietokantakaavio-1-N.html](docs/tietokantakaavio-1-N.html)
 
 - **Käyttäjäroolit ja -tarinat**:  
-  - `docs/Käyttäjäroolit-ja-käyttäjätarinat.md`
+  - [docs/Käyttäjäroolit-ja-käyttäjätarinat.md](docs/Käyttäjäroolit-ja-käyttäjätarinat.md)
 
 - **Spring Boot -arkkitehtuuri** (aloittelijaystävällinen selitys):  
-  - `docs/Spring-Boot-ja-arkkitehtuuri.md`
+  - [docs/Spring-Boot-ja-arkkitehtuuri.md](docs/Spring-Boot-ja-arkkitehtuuri.md)
 
 ---
 
