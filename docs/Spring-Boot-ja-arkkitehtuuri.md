@@ -152,11 +152,36 @@ public class EventController {
 | 3 | **DispatcherServlet** | Ohjaa POST `/api/events` → EventController |
 | 4 | **EventController.create()** | `@PostMapping` vastaa, `@RequestBody` → Jackson muuntaa JSON:n `EventDto`:ksi |
 | 5 | **@Valid** | Tarkistaa EventDto:n (esim. kuvaus ei tyhjä, kapasiteetti ≥ 1) |
-| 6 | **Controller** | `toEntity(dto)` muuntaa EventDto → Event |
+| 6 | **Controller** | `toEntity(dto)` muuntaa EventDto → Event (entity) |
 | 7 | **eventRepository.save(event)** | Spring Data suorittaa `INSERT INTO tapahtuma ...` |
 | 8 | **H2** | Tallentaa rivin, palauttaa luodun Eventin (id generoitu) |
 | 9 | **Controller** | `toDto(event)` → palauttaa luodun tapahtuman JSONina |
 | 10 | **Client** | Vastaus 201 Created + JSON |
+
+#### Vaiheen 6 tarkennus: Miksi EventDto → Event -muunnos?
+
+**`toEntity(dto)`** luo uuden **Event-entity-olion** EventDto:n tiedoista:
+
+```java
+// EventController.java - toEntity() -metodi
+private Event toEntity(EventDto dto) {
+    Event event = new Event();  // ← UUSI Event-entity-olio
+    event.setKuvaus(dto.getKuvaus());
+    event.setAika(dto.getAika());
+    event.setKaupunki(dto.getKaupunki());
+    event.setPaikka(dto.getPaikka());
+    event.setKapasiteetti(dto.getKapasiteetti());
+    return event;  // ← Palautetaan Event-entity
+}
+```
+
+**Miksi tarvitaan muunnos?**
+
+- **EventDto** on siirrettävää dataa (ei `@Entity`-annotaatiota) → ei voida tallentaa suoraan tietokantaan
+- **Event** on `@Entity` → Hibernate osaa tallentaa sen tietokantaan
+- **Repository** odottaa `Event`-oliota, ei `EventDto`:ta
+
+**Yhteenveto:** `toEntity()` luo `Event`-entity-olion `EventDto`:n tiedoista, jotta se voidaan tallentaa tietokantaan `eventRepository.save(event)` -kutsulla.
 
 ---
 
