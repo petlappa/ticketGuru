@@ -36,6 +36,17 @@ src/main/java/com/example/ticketguru/
 
 ### 3.1 Konfiguraatio
 
+**`pom.xml` – H2-riippuvuus:**
+
+```xml
+<dependency>
+    <groupId>com.h2database</groupId>
+    <artifactId>h2</artifactId>
+</dependency>
+```
+
+Tämä tuo H2-ajurin projektiin. Ilman tätä rivejä Spring ei voisi avata `jdbc:h2:...` -yhteyttä.
+
 **`application.properties`:**
 ```properties
 spring.datasource.url=jdbc:h2:mem:ticketguru
